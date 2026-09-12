@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Илья Абрамов — Портфолио</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Илья Абрамов</a>
+            <button class="mobile-toggle">&#9776;</button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#skills">Навыки</a></li>
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="about" class="section about-section">
+            <div class="container">
+                <h2>Обо мне</h2>
+                <p>Привет! Меня зовут Илья, я студент группы ФИТ-241. Увлекаюсь веб-разработкой и программированием. Моя цель — стать крутым специалистом и создавать удобные, красивые и функциональные веб-приложения.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section bg-light">
+            <div class="container">
+                <h2>Мои навыки</h2>
+                <div class="carousel-wrapper">
+                    <button class="carousel-btn prev-btn">&lt;</button>
+                    <div class="carousel-track">
+                        <div class="skill-card">
+                            <h3>HTML5</h3>
+                            <p>Семантическая и кроссбраузерная верстка</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>CSS3</h3>
+                            <p>Flexbox, Grid, адаптивный дизайн (RWD)</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>JavaScript</h3>
+                            <p>Базовые алгоритмы, работа с DOM, jQuery</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Python</h3>
+                            <p>Основы программирования, скрипты, бэкенд</p>
+                        </div>
+                        <div class="skill-card">
+                            <h3>Git</h3>
+                            <p>Системы контроля версий, GitHub, GitVerse</p>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next-btn">&gt;</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h2>Портфолио</h2>
+                <div class="portfolio-grid" id="portfolio-container">
+                    <!-- Загружается из JSON через jQuery -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contacts" class="section bg-light">
+            <div class="container contacts-container">
+                <h2>Контакты</h2>
+                <p>Готов к сотрудничеству и интересным проектам!</p>
+                <ul class="contacts-list">
+                    <li><strong>Email:</strong> <a href="mailto:ilyabramov22222@gmail.com">ilyabramov22222@gmail.com</a></li>
+                    <li><strong>GitHub:</strong> <a href="https://github.com/abramov222" target="_blank">Мой профиль</a></li>
+                    <li><strong>Telegram:</strong> <a href="https://t.me/vafffffff" target="_blank">@vafffffff</a></li>
+                </ul>
+                <button id="openModalBtn" class="btn contact-btn">Написать мне</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Илья Абрамов. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Обратная связь</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Ваше имя" required>
+                <input type="email" id="email" placeholder="Ваш Email" required>
+                <textarea id="message" placeholder="Сообщение" rows="4" required></textarea>
+                <button type="submit" class="btn submit-btn">Отправить</button>
+                <div class="form-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Кнопка Вверх -->
+    <button class="back-to-top" id="backToTop">&#9650;</button>
+
+    <!-- Скрипты -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
