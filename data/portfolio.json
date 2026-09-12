@@ -1,0 +1,17 @@
+[
+    {
+        "img": "images/web.png",
+        "title": "Лабораторная работа 1",
+        "desc": "Статичная страница-визитка с использованием HTML и CSS."
+    },
+    {
+        "img": "images/3lab.png",
+        "title": "Проект на Java",
+        "desc": "Великая 3 лаба"
+    },
+    {
+        "img": "images/FinanceBot.png",
+        "title": "Проект на Python",
+        "desc": "Финансовый трекер"
+    }
+]
