@@ -4,105 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Илья Абрамов — Портфолио</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="dist/css/main.css">
 </head>
 <body>
 
     <header class="header">
-        <div class="container header-container">
-            <a href="#" class="logo">Илья Абрамов</a>
-            <button class="mobile-toggle">&#9776;</button>
-            <nav class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="#about">Обо мне</a></li>
-                    <li><a href="#skills">Навыки</a></li>
-                    <li><a href="#portfolio">Портфолио</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
+        <div class="container header__container">
+            <a href="#" class="header__logo">Илья Абрамов</a>
+            <button class="theme-toggle js-theme-toggle" id="themeToggle" aria-label="Переключить тему" type="button">&#9789;</button>
+            <button class="header__burger js-nav-toggle" aria-label="Открыть меню">&#9776;</button>
+            <nav class="nav">
+                <ul class="nav__list js-nav-list">
+                    <li><a href="#about" class="nav__link js-nav-link">Обо мне</a></li>
+                    <li><a href="#skills" class="nav__link js-nav-link">Навыки</a></li>
+                    <li><a href="#portfolio" class="nav__link js-nav-link">Портфолио</a></li>
+                    <li><a href="#contacts" class="nav__link js-nav-link">Контакты</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="about" class="section about-section">
+        <section id="about" class="section js-section">
             <div class="container">
                 <h2>Обо мне</h2>
                 <p>Привет! Меня зовут Илья, я студент группы ФИТ-241. Увлекаюсь веб-разработкой и программированием. Моя цель — стать крутым специалистом и создавать удобные, красивые и функциональные веб-приложения.</p>
             </div>
         </section>
 
-        <section id="skills" class="section bg-light">
+        <section id="skills" class="section section--alt js-section">
             <div class="container">
                 <h2>Мои навыки</h2>
-                <div class="carousel-wrapper">
-                    <button class="carousel-btn prev-btn">&lt;</button>
-                    <div class="carousel-track">
-                        <div class="skill-card">
-                            <h3>HTML5</h3>
-                            <p>Семантическая и кроссбраузерная верстка</p>
+                <div class="carousel">
+                    <button class="carousel__btn carousel__btn--prev js-carousel-prev">&lt;</button>
+                    <div class="carousel__track js-carousel-track">
+                        <div class="skill-card js-skill-card">
+                            <h3 class="skill-card__title">HTML5</h3>
+                            <p class="skill-card__text">Семантическая и кроссбраузерная верстка</p>
                         </div>
-                        <div class="skill-card">
-                            <h3>CSS3</h3>
-                            <p>Flexbox, Grid, адаптивный дизайн (RWD)</p>
+                        <div class="skill-card js-skill-card">
+                            <h3 class="skill-card__title">CSS3</h3>
+                            <p class="skill-card__text">Flexbox, Grid, адаптивный дизайн (RWD)</p>
                         </div>
-                        <div class="skill-card">
-                            <h3>JavaScript</h3>
-                            <p>Базовые алгоритмы, работа с DOM, jQuery</p>
+                        <div class="skill-card js-skill-card">
+                            <h3 class="skill-card__title">JavaScript</h3>
+                            <p class="skill-card__text">Базовые алгоритмы, работа с DOM, jQuery</p>
                         </div>
-                        <div class="skill-card">
-                            <h3>Python</h3>
-                            <p>Основы программирования, скрипты, бэкенд</p>
+                        <div class="skill-card js-skill-card">
+                            <h3 class="skill-card__title">Python</h3>
+                            <p class="skill-card__text">Основы программирования, скрипты, бэкенд</p>
                         </div>
-                        <div class="skill-card">
-                            <h3>Git</h3>
-                            <p>Системы контроля версий, GitHub, GitVerse</p>
+                        <div class="skill-card js-skill-card">
+                            <h3 class="skill-card__title">Git</h3>
+                            <p class="skill-card__text">Системы контроля версий, GitHub, GitVerse</p>
                         </div>
                     </div>
-                    <button class="carousel-btn next-btn">&gt;</button>
+                    <button class="carousel__btn carousel__btn--next js-carousel-next">&gt;</button>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio" class="section">
+        <section id="portfolio" class="section js-section">
             <div class="container">
                 <h2>Портфолио</h2>
-                <div class="portfolio-grid" id="portfolio-container">
+                <div class="portfolio__grid" id="portfolio-container">
                     <!-- Загружается из JSON через jQuery -->
                 </div>
             </div>
         </section>
 
-        <section id="contacts" class="section bg-light">
-            <div class="container contacts-container">
+        <section id="contacts" class="section section--alt js-section">
+            <div class="container contacts">
                 <h2>Контакты</h2>
                 <p>Готов к сотрудничеству и интересным проектам!</p>
-                <ul class="contacts-list">
+                <ul class="contacts__list">
                     <li><strong>Email:</strong> <a href="mailto:ilyabramov22222@gmail.com">ilyabramov22222@gmail.com</a></li>
                     <li><strong>GitHub:</strong> <a href="https://github.com/abramov222" target="_blank">Мой профиль</a></li>
                     <li><strong>Telegram:</strong> <a href="https://t.me/vafffffff" target="_blank">@vafffffff</a></li>
                 </ul>
-                <button id="openModalBtn" class="btn contact-btn">Написать мне</button>
+                <button id="openModalBtn" class="btn btn--primary">Написать мне</button>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-container">
+        <div class="container footer__container">
             <p>&copy; 2026 Илья Абрамов. Все права защищены.</p>
         </div>
     </footer>
 
     <!-- Модальное окно -->
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
+    <div class="modal" id="contactModal">
+        <div class="modal__content">
+            <span class="modal__close js-modal-close">&times;</span>
             <h2>Обратная связь</h2>
-            <form id="contactForm">
-                <input type="text" id="name" placeholder="Ваше имя" required>
-                <input type="email" id="email" placeholder="Ваш Email" required>
-                <textarea id="message" placeholder="Сообщение" rows="4" required></textarea>
-                <button type="submit" class="btn submit-btn">Отправить</button>
-                <div class="form-msg"></div>
+            <form id="contactForm" class="form">
+                <input type="text" id="name" class="form__control" placeholder="Ваше имя" required>
+                <input type="email" id="email" class="form__control" placeholder="Ваш Email" required>
+                <textarea id="message" class="form__control" placeholder="Сообщение" rows="4" required></textarea>
+                <button type="submit" class="btn btn--primary btn--small js-submit-btn">Отправить</button>
+                <div class="form__message js-form-message"></div>
             </form>
         </div>
     </div>

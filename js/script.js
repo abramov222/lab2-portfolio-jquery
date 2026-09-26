@@ -1,26 +1,49 @@
+// Переключение темы (выполняется сразу, до готовности DOM, чтобы меньше мигало)
+(function initTheme() {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = stored || (prefersDark ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+
 $(document).ready(function() {
-    
+
+    // Переключатель темы
+    function applyThemeIcon(theme) {
+        $('#themeToggle').html(theme === 'dark' ? '&#9728;' : '&#9789;');
+    }
+
+    let currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    applyThemeIcon(currentTheme);
+
+    $('.js-theme-toggle').click(function() {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        localStorage.setItem('theme', currentTheme);
+        applyThemeIcon(currentTheme);
+    });
+
     // Выпадающее меню
-    $('.mobile-toggle').click(function() {
-        $('.nav-list').slideToggle();
+    $('.js-nav-toggle').click(function() {
+        $('.js-nav-list').slideToggle();
     });
 
     // скролл и подсветка активного пункта меню
-    $('.nav-list a').click(function(e) {
+    $('.js-nav-link').click(function(e) {
         e.preventDefault();
         let target = $(this).attr('href');
         $('html, body').animate({
             scrollTop: $(target).offset().top - 60
         }, 600);
-        
-        if ($(window).width() <= 767) {
-            $('.nav-list').slideUp();
+
+        if ($(window).width() < 768) {
+            $('.js-nav-list').slideUp();
         }
     });
 
     $(window).scroll(function() {
         let scrollPos = $(window).scrollTop();
-        
+
         // Кнопка наверх
         if (scrollPos > 300) {
             $('#backToTop').fadeIn();
@@ -29,12 +52,12 @@ $(document).ready(function() {
         }
 
         // Подсветка меню
-        $('.section').each(function() {
+        $('.js-section').each(function() {
             let top = $(this).offset().top - 100;
             let bottom = top + $(this).outerHeight();
             if (scrollPos >= top && scrollPos <= bottom) {
-                $('.nav-list a').removeClass('active');
-                $('.nav-list a[href="#' + $(this).attr('id') + '"]').addClass('active');
+                $('.js-nav-link').removeClass('nav__link--active');
+                $('.js-nav-link[href="#' + $(this).attr('id') + '"]').addClass('nav__link--active');
             }
         });
     });
@@ -44,16 +67,16 @@ $(document).ready(function() {
         $('html, body').animate({scrollTop: 0}, 600);
     });
 
-    // динамическая галерея 
+    // динамическая галерея
     $.getJSON('data/portfolio.json', function(data) {
         let html = '';
         $.each(data, function(index, item) {
             html += `
             <div class="portfolio-card" style="display:none;">
-                <img src="${item.img}" alt="${item.title}">
-                <div class="card-content">
-                    <h3>${item.title}</h3>
-                    <p>${item.desc}</p>
+                <img class="portfolio-card__image" src="${item.img}" alt="${item.title}">
+                <div class="portfolio-card__body">
+                    <h3 class="portfolio-card__title">${item.title}</h3>
+                    <p class="portfolio-card__text">${item.desc}</p>
                 </div>
             </div>`;
         });
@@ -68,36 +91,36 @@ $(document).ready(function() {
         $('#contactModal').fadeIn();
     });
 
-    $('.close-btn, .modal-overlay').click(function(e) {
+    $('.js-modal-close, #contactModal').click(function(e) {
         if (e.target === this) {
             $('#contactModal').fadeOut();
             $('#contactForm')[0].reset();
-            $('.form-msg').text('');
+            $('.js-form-message').text('');
         }
     });
 
     // Валидация и симуляция отправки формы AJAX
     $('#contactForm').submit(function(e) {
         e.preventDefault();
-        
+
         let name = $('#name').val().trim();
         let email = $('#email').val().trim();
         let msg = $('#message').val().trim();
-        let $msgBox = $('.form-msg');
+        let $msgBox = $('.js-form-message');
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (name === '' || email === '' || msg === '') {
-            $msgBox.text('Заполните все поля').removeClass('success').addClass('error');
+            $msgBox.text('Заполните все поля').removeClass('form__message--success').addClass('form__message--error');
             return;
         }
 
         if (!emailRegex.test(email)) {
-            $msgBox.text('Введите корректный Email').removeClass('success').addClass('error');
+            $msgBox.text('Введите корректный Email').removeClass('form__message--success').addClass('form__message--error');
             return;
         }
 
-        $msgBox.text('Отправка...').removeClass('error success');
-        let $btn = $('.submit-btn');
+        $msgBox.text('Отправка...').removeClass('form__message--error form__message--success');
+        let $btn = $('.js-submit-btn');
         $btn.prop('disabled', true);
 
         $.ajax({
@@ -105,11 +128,11 @@ $(document).ready(function() {
             method: 'POST',
             data: { name: name, email: email, message: msg },
             success: function() {
-                $msgBox.text('Успешно отправлено!').removeClass('error').addClass('success');
+                $msgBox.text('Успешно отправлено!').removeClass('form__message--error').addClass('form__message--success');
                 $('#contactForm')[0].reset();
             },
             error: function() {
-                $msgBox.text('Ошибка сервера.').removeClass('success').addClass('error');
+                $msgBox.text('Ошибка сервера.').removeClass('form__message--success').addClass('form__message--error');
             },
             complete: function() {
                 $btn.prop('disabled', false);
@@ -120,40 +143,39 @@ $(document).ready(function() {
 
     // Карусель навыков
     let currentSlide = 0;
-    
+
     function updateCarousel() {
         let slideWidth;
-        if ($(window).width() > 1023) slideWidth = 4;
-        else if ($(window).width() > 767) slideWidth = 2;
+        if ($(window).width() >= 1024) slideWidth = 4;
+        else if ($(window).width() >= 768) slideWidth = 2;
         else slideWidth = 1;
 
-        let totalCards = $('.skill-card').length;
+        let totalCards = $('.js-skill-card').length;
         let maxSlide = totalCards - slideWidth;
-        
+
         if (currentSlide > maxSlide) currentSlide = 0;
         if (currentSlide < 0) currentSlide = maxSlide;
 
-        let percentage = -(currentSlide * (100 / slideWidth));
-        
-        if(slideWidth === 1) {
+        let percentage;
+        if (slideWidth === 1) {
             percentage = -(currentSlide * 100);
         } else if (slideWidth === 2) {
-             percentage = -(currentSlide * 50);
+            percentage = -(currentSlide * 50);
         } else {
-             percentage = -(currentSlide * 25);
+            percentage = -(currentSlide * 25);
         }
-        
-        $('.carousel-track').css('transform', `translateX(${percentage}%)`);
+
+        $('.js-carousel-track').css('transform', `translateX(${percentage}%)`);
     }
 
     $(window).resize(updateCarousel);
 
-    $('.next-btn').click(function() {
+    $('.js-carousel-next').click(function() {
         currentSlide++;
         updateCarousel();
     });
 
-    $('.prev-btn').click(function() {
+    $('.js-carousel-prev').click(function() {
         currentSlide--;
         updateCarousel();
     });
