@@ -1,0 +1,15 @@
+@use 'sass:math';
+
+// Убирает единицу измерения у числа (10px -> 10)
+@function strip-unit($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+// Переводит px в rem при базовом размере шрифта 16px
+@function rem($px) {
+  @if math.unit($px) != 'px' {
+    @error "rem() ожидает значение в px, получено `#{$px}`";
+  }
+
+  @return math.div(strip-unit($px), 16) * 1rem;
+}

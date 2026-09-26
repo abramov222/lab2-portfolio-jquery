@@ -1,0 +1,13 @@
+@use '../utils' as *;
+
+.section {
+  padding: $section-padding-y 0;
+
+  @include respond-to(tablet) {
+    padding: $section-padding-y-wide 0;
+  }
+
+  &--alt {
+    background-color: var(--color-bg-alt);
+  }
+}

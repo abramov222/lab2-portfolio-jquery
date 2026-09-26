@@ -1,0 +1,18 @@
+@use '../utils' as *;
+
+.portfolio-card {
+  background: var(--color-surface);
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-md;
+
+  &__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &__body {
+    padding: 20px;
+  }
+}

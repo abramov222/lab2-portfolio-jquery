@@ -1,0 +1,15 @@
+@use 'maps';
+
+// Светлая тема — значения по умолчанию для :root
+:root {
+  @each $name, $value in maps.$theme-light {
+    --color-#{$name}: #{$value};
+  }
+}
+
+// Тёмная тема — переопределяет переменные, когда на <html> стоит data-theme="dark"
+[data-theme='dark'] {
+  @each $name, $value in maps.$theme-dark {
+    --color-#{$name}: #{$value};
+  }
+}

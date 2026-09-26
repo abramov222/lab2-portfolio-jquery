@@ -1,0 +1,18 @@
+@use '../utils' as *;
+
+.back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: $radius-round;
+  cursor: pointer;
+  z-index: $z-back-to-top;
+  font-size: 1.2rem;
+  box-shadow: $shadow-lg;
+}

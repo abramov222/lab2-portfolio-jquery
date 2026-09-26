@@ -1,0 +1,33 @@
+@use '../utils' as *;
+
+.nav {
+  // блок-обёртка <nav>, собственных стилей не требует
+}
+
+.nav__list {
+  display: none;
+  flex-direction: column;
+  list-style: none;
+  width: 100%;
+  gap: 20px;
+  text-align: center;
+  background: var(--color-primary);
+  padding-top: 15px;
+
+  @include respond-to(tablet) {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    background: transparent;
+    padding-top: 0;
+  }
+}
+
+.nav__link {
+  color: #fff;
+  font-weight: 500;
+
+  &--active {
+    color: var(--color-active);
+  }
+}

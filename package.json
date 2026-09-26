@@ -1,0 +1,17 @@
+{
+  "name": "lab2-portfolio-jquery",
+  "version": "1.0.0",
+  "description": "Сайт-визитка портфолио на HTML, Sass (SCSS) и jQuery",
+  "main": "index.js",
+  "scripts": {
+    "sass:dev": "sass --watch scss/main.scss:dist/css/main.css",
+    "build": "sass --no-source-map --style=compressed scss/main.scss:dist/css/main.css"
+  },
+  "keywords": [],
+  "author": "Илья Абрамов",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.105.0"
+  }
+}

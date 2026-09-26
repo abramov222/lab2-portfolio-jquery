@@ -1,0 +1,12 @@
+@use '../utils' as *;
+
+.contacts {
+  @include flex-center($direction: column);
+
+  &__list {
+    list-style: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}

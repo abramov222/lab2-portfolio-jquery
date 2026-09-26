@@ -1,0 +1,29 @@
+$theme-light: (
+  bg: #ffffff,
+  bg-alt: #f8f9fa,
+  surface: #ffffff,
+  text: #333333,
+  text-muted: #555555,
+  primary: #2c3e50,
+  accent: #3498db,
+  accent-hover: #2980b9,
+  border: #cccccc,
+  success: #2ecc71,
+  error: #e74c3c,
+  active: #f1c40f,
+);
+
+$theme-dark: (
+  bg: #1a1d23,
+  bg-alt: #12141a,
+  surface: #242830,
+  text: #e6e6e6,
+  text-muted: #a0a0a0,
+  primary: #12141a,
+  accent: #5dade2,
+  accent-hover: #3498db,
+  border: #3a3f4a,
+  success: #2ecc71,
+  error: #e74c3c,
+  active: #f1c40f,
+);
