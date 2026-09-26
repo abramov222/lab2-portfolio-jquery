@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+// Медиа-запрос по имени брейкпоинта из карты $breakpoints (min-width, mobile-first)
+@mixin respond-to($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error "Неизвестный брейкпоинт `#{$breakpoint}`. Доступные значения: #{map.keys($breakpoints)}";
+  }
+
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Центрирование содержимого через flex
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}

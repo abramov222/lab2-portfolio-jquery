@@ -1,0 +1,46 @@
+@use '../utils' as *;
+
+.header {
+  background-color: var(--color-primary);
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    padding: 15px 0;
+
+    @include respond-to(tablet) {
+      flex-wrap: nowrap;
+      padding: 0;
+      min-height: 70px;
+    }
+  }
+
+  &__logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__burger {
+    display: block;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+
+    @include respond-to(tablet) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+@use '../utils' as *;
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 30px;
+
+  @include respond-to(tablet) {
+    padding: 10px 40px;
+  }
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    transition: transform $transition-slide;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: $z-carousel-btn;
+    border-radius: $radius-round;
+    font-weight: bold;
+
+    &--prev {
+      left: 0;
+    }
+
+    &--next {
+      right: 0;
+    }
+  }
+}

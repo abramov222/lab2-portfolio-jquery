@@ -1,0 +1,7 @@
+@use '../utils' as *;
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 rem($container-padding);
+}
